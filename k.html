@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+  <style>
+    body, html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      transition: background 0.5s ease; /* Add a smooth transition effect */
+    }
+
+    html {
+      display: table;
+    }
+
+    canvas {
+      width: 900px;
+      height: 200px;
+      display: block;
+      position: relative;
+      background: transparent;
+      margin: 40px auto;
+    }
+
+    body {
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    /* Define day and night mode styles */
+    .day-mode {
+      background: #87CEEB; /* Light blue for day mode */
+    }
+
+    .night-mode {
+      background: #000000; /* Black for night mode */
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var isNightMode = false; // Flag to track the current mode
+
+      // Function to toggle between day and night mode
+      function toggleMode() {
+        isNightMode = !isNightMode; // Invert the mode flag
+        $('body').toggleClass('day-mode', !isNightMode).toggleClass('night-mode', isNightMode);
+      }
+
+      // Call the toggleMode function when the button is clicked
+      $('#mode-toggle').on('click', toggleMode);
+
+      var ringer = {
+        // ... (Your existing code)
+
+        init: function(){
+          var $r = this;
+          $r.cvs = document.createElement('canvas');
+          // ... (Your existing code)
+
+          // Apply initial mode
+          toggleMode();
+          $r.go();
+        },
+
+        // ... (Your existing code)
+      }
+
+      ringer.init();
+    });
+  </script>
+</head>
+<body>
+  <!-- Your HTML content goes here -->
+
+  <!-- Button to toggle between day and night mode -->
+  <button id="mode-toggle">Toggle Mode</button>
+</body>
+</html>
